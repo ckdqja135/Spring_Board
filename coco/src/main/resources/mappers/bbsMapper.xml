@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbsMapper">
+	<insert id='write_bbs'>
+		INSERT INTO bbs (b_owner, b_title, b_content)
+		VALUES (#{b_owner}, #{b_title}, #{b_content})
+	</insert>
+	
+	<select id = "bbs_all" resultType="bbs">
+		select b.*, (select u_id from user u where u.u_no = b.b_owner) b_ownernick from bbs b
+	</select>
+	
+	<select id = "get_bbs" resultType="bbs">
+		select b.*, (select u_id from user u where u.u_no = b.b_owner) b_ownernick from bbs b where b.b_no = #{b_no}
+	</select>
+</mapper>

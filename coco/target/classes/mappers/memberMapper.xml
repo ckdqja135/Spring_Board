@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<select id="Id_Check" resultType="int">
+		select count(*) from user u
+		where u.u_id = #{u_id}
+	</select>
+
+	<insert id='Register'>
+		INSERT INTO user (u_id, u_pw)
+		VALUES (#{u_id},
+		#{u_pw})
+	</insert>
+
+	<select id="Login" resultType="int">
+		select count(*) from user u
+		where u.u_id = #{u_id} and u.u_pw = #{u_pw}
+	</select>
+
+	<select id="Login_Info" resultType="User">
+		select * from user u
+		where u.u_id = #{u_id} and u.u_pw = #{u_pw}
+	</select>
+</mapper>
