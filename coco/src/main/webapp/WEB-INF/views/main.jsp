@@ -8,7 +8,7 @@
     <title>게시판 페이지</title>
     <!-- css 가져오기 -->
     <link rel="stylesheet" type="text/css" href="/coco/resources/semantic.min.css">
-
+	<!-- css 가져오기 -->
     <style type="text/css">
         body {
             background-color: #DADADA;
@@ -90,9 +90,12 @@
                 type: "get",
                 url: "bbs_all",
                 success: function(data) {
+                	// 데이터 만큼 for문을 돌림
                     console.log(data);
                     for (var str in data) {
+                    	// 변수 tr에 속성을 data-id로 data[str]['b_no']를 넣어주고 id가 list인 태그에 추가
                         var tr = $("<tr></tr>").attr("data-id", data[str]['b_no']).appendTo("#list");
+                    	//tr에 td테이블 추가 및 클래스 추가 + 텍스트 수정
                         $("<td></td>").text(data[str]['b_no']).addClass("view_btn").appendTo(tr);
                         $("<td></td>").text(data[str]['b_title']).addClass("view_btn").appendTo(tr);
                         $("<td></td>").text(data[str]['b_ownernick']).addClass("view_btn").appendTo(tr);
@@ -105,6 +108,7 @@
             });
 
             $(document).on("click", ".view_btn", function() {
+            	// 해당하는 태크 속성중 DATA-ID를 가져와서 B_NO에 담음
                 var b_no = $(this).parent().attr("data-id");
 
                 $.ajax({
@@ -114,10 +118,12 @@
                         b_no: b_no
                     },
                     success: function(data) {
+                    	// 해당하는 ID에 텍스트문 변경
                     	console.log(data);
                     	$("#b_title").text(data['b_title']);
                     	$("#b_review").text(data['b_ownernick'] + " - " +  FormatToUnixtime(data['b_regdate']));
                     	$("#b_content").text(data['b_content']);
+                    	// modal을 실행
                     	$('#view_modal').modal('show');
                     },
                     error: function(error) {

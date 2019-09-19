@@ -60,26 +60,35 @@
     <script src="/coco/resources/semantic.min.js"></script>
     <script>
         $(document).ready(function() {
+        	// id가 write_bbs를 클릭할 때
             $("#write_bbs").click(function() {
+            	// json 객체에 값을 담아줌.
                 var json = {
                     b_title: $("#b_title").val(),
                     b_content: $("#b_content").val()
                 };
-
+            	
+				// 변수명이 json에 담아둔 값만큼 for each문을 돌림.
                 for (var str in json) {
+                	// json의 str의 길이가 0인 경우
                     if (json[str].length == 0) {
+                    	// 해당하는 id에 placeholder를 찾아 경고창을 띄운다.
                         alert($("#" + str).attr("placeholder") + "를 입력해주세요.");
+                    	// 해당하는 id에 포커스를 올림
                         $("#" + str).focus();
+                    	// 리턴
                         return;
                     }
                 }
-
+				// 비동기 요청
                 $.ajax({
-                    type: "post",
-                    url: "write_bbs",
-                    data: json,
-                    success: function(data) {
+                    type: "post", // post로
+                    url: "write_bbs", // url 지정
+                    data: json, // 전달값은 json
+                    success: function(data) { // 성공시
                         switch (Number(data)) {
+                        // 받아온 데이터를 스위치문 사용
+                        // -1은 로그인 안될 때, 0은 성공, 나머지는 db오류
                             case -1:
 								alert("로그인 후 이용해주세요.");
 								window.location.href = "/coco";
