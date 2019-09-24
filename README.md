@@ -14,3 +14,4 @@ Server : Apache Tomcat 9.0.26
 https://github.com/ckdqja135/Spring_Board/issues/1#issue-497753747
 
 # 실행화면
+https://github.com/ckdqja135/Spring_Board/issues/2#issue-497759392
