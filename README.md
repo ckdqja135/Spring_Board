@@ -1,13 +1,9 @@
 # Spring_Board
-DB : Mariadb version 10.3.17
-
-DB Tool : HeidiSQL
-
-STS version : spring-tool-suite-3.9.9.RELEASE
-
-Design Pattern : Singleton pattern
-
-Server : Apache Tomcat 9.0.26
+#### DB : Mariadb version 10.3.17
+#### DB Tool : HeidiSQL
+#### STS version : spring-tool-suite-3.9.9.RELEASE
+#### Design Pattern : Singleton pattern
+#### Server : Apache Tomcat 9.0.26
 
 -------------------------------------------------
 # HeidiSQL에 테이블 생성 SQL 문 넣기
